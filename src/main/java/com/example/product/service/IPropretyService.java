@@ -8,4 +8,5 @@ import java.util.List;
 public interface IPropretyService {
     public void createProperty(Properties pp);
     public List<Properties> getListProperty();
+    public  List<Properties> getListPropertyByProductID(int pdID);
 }

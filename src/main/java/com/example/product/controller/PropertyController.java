@@ -27,4 +27,9 @@ public class PropertyController {
     public List<Properties> getListProperty(){
         return iPropretyService.getListProperty();
     }
+    @GetMapping(value = "/getlistpropertybyproductid/{id}")
+    public List<Properties> getListPropertyByProductID(@PathVariable(name = "id") int pdID){
+        return iPropretyService.getListPropertyByProductID(pdID);
+    }
 }
+

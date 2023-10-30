@@ -19,4 +19,9 @@ public class PropertyService implements IPropretyService{
     public List<Properties> getListProperty() {
         return propertyRepo.findAll();
     }
+
+    @Override
+    public List<Properties> getListPropertyByProductID(int pdID) {
+        return propertyRepo.getPropertiesByProductID(pdID);
+    }
 }
