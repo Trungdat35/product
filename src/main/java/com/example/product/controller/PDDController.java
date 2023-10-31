@@ -38,4 +38,8 @@ public class PDDController {
         ipddService.updatePDD(pdd);
         return ResponseEntity.ok(new Response(HttpStatus.ACCEPTED,"Update pdd successful !"));
     }
+    @GetMapping(value = "/getpddbyid/{id}")
+    public ProductDetail getPPDByID(@PathVariable(name = "id" )int ppdID){
+        return ipddService.getPPDbyID(ppdID);
+    }
 }

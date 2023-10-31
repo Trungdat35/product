@@ -20,4 +20,9 @@ public class PropertyDetailService implements IPPDService{
     public List<PropertyDetails> getListPropertyDetail() {
         return propertyDetailRepo.findAll();
     }
+
+    @Override
+    public List<PropertyDetails> getListPropertyDatailByProperty(int ppID) {
+        return propertyDetailRepo.getPropertyDetailsByPropertyID(ppID);
+    }
 }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PDDRepo extends JpaRepository<ProductDetail,Integer> {
+    ProductDetail findProductDetailByProductDetailID(int pddID);
 }

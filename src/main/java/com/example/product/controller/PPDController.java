@@ -2,6 +2,7 @@ package com.example.product.controller;
 
 import com.example.product.exception.Response;
 import com.example.product.models.Products;
+import com.example.product.models.Properties;
 import com.example.product.models.PropertyDetails;
 import com.example.product.service.IPPDService;
 import com.example.product.service.IProductService;
@@ -26,5 +27,9 @@ public class PPDController {
     @GetMapping(value = "/getlistppd")
     public List<PropertyDetails> getListPPD(){
         return ippdService.getListPropertyDetail();
+    }
+    @GetMapping(value = "/getlistppdbyppid/{id}")
+    public List<PropertyDetails> getListPPDByPPID(@PathVariable(name = "id") int ppID){
+        return ippdService.getListPropertyDatailByProperty(ppID);
     }
 }

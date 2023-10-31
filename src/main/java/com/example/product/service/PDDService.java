@@ -75,4 +75,9 @@ public class PDDService implements IPDDService {
             throw new AllException("Sản phẩm không tồn tại !");
         }
     }
+
+    @Override
+    public ProductDetail getPPDbyID(int ppdID) {
+        return pddRepo.findProductDetailByProductDetailID(ppdID);
+    }
 }

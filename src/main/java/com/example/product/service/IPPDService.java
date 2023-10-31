@@ -8,4 +8,5 @@ import java.util.List;
 public interface IPPDService {
     public void createPropertyDetail(PropertyDetails ppd);
     public List<PropertyDetails> getListPropertyDetail();
+    public  List<PropertyDetails> getListPropertyDatailByProperty(int ppID);
 }
