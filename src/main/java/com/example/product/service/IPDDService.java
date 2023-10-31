@@ -12,4 +12,5 @@ public interface IPDDService {
     public void updatePDD(ProductDetail pdd);
     public void updateQuantity(CustomProduct customProduct);
     public ProductDetail getPPDbyID(int ppdID);
+    public List<ProductDetail> getListProduct();
 }

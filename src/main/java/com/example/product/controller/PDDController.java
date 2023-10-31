@@ -42,4 +42,8 @@ public class PDDController {
     public ProductDetail getPPDByID(@PathVariable(name = "id" )int ppdID){
         return ipddService.getPPDbyID(ppdID);
     }
+    @GetMapping(value = "/getpd")
+    public List<ProductDetail>  getPPDByID(){
+        return ipddService.getListProduct();
+    }
 }

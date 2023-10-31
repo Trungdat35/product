@@ -80,4 +80,10 @@ public class PDDService implements IPDDService {
     public ProductDetail getPPDbyID(int ppdID) {
         return pddRepo.findProductDetailByProductDetailID(ppdID);
     }
+
+    @Override
+    public List<ProductDetail> getListProduct() {
+        List<Integer> integerList = pdpdRepo.getPD();
+        return  pddRepo.getListPD(integerList);
+    }
 }
