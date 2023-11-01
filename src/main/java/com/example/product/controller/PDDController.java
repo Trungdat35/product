@@ -1,5 +1,6 @@
 package com.example.product.controller;
 
+import com.example.product.DTO.CustomPPD;
 import com.example.product.DTO.CustomProduct;
 import com.example.product.exception.Response;
 import com.example.product.models.ProductDetail;
@@ -39,11 +40,15 @@ public class PDDController {
         return ResponseEntity.ok(new Response(HttpStatus.ACCEPTED,"Update pdd successful !"));
     }
     @GetMapping(value = "/getpddbyid/{id}")
-    public ProductDetail getPPDByID(@PathVariable(name = "id" )int ppdID){
-        return ipddService.getPPDbyID(ppdID);
+    public ProductDetail getPDDByID(@PathVariable(name = "id" )int ppdID){
+        return ipddService.getPDDbyID(ppdID);
     }
     @GetMapping(value = "/getpd")
     public List<ProductDetail>  getPPDByID(){
         return ipddService.getListProduct();
+    }
+    @GetMapping(value = "/getpddbyppd")
+    public ProductDetail  getPDDByPPD(@RequestParam(name = "listPP") List<Integer> listPP){
+        return ipddService.getPDDbyPPD(listPP);
     }
 }

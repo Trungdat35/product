@@ -1,8 +1,8 @@
 package com.example.product.service;
 
+import com.example.product.DTO.CustomPPD;
 import com.example.product.DTO.CustomProduct;
 import com.example.product.exception.AllException;
-import com.example.product.models.PDPD;
 import com.example.product.models.ProductDetail;
 import com.example.product.repository.PDDRepo;
 import com.example.product.repository.PDPDRepo;
@@ -32,6 +32,16 @@ public class PDDService implements IPDDService {
     @Override
     public void updatePDD(ProductDetail pdd) {
        Optional<ProductDetail> pddOption = pddRepo.findById(pdd.getProductDetailID());
+       List<Integer> listppID = pdpdRepo.getPD();
+       boolean check =false;
+        for (Integer i: listppID
+             ) {
+            if(i==pdd.getProductDetailID()){
+                check = true;
+                break;
+            }
+        }
+        if(!check) throw new AllException("Sản phẩm không thể update !");
        if(pddOption.isPresent()){
            ProductDetail pddCurrent = pddOption.get();
            int quantityUpdate = pdd.getQuantity();
@@ -77,7 +87,7 @@ public class PDDService implements IPDDService {
     }
 
     @Override
-    public ProductDetail getPPDbyID(int ppdID) {
+    public ProductDetail getPDDbyID(int ppdID) {
         return pddRepo.findProductDetailByProductDetailID(ppdID);
     }
 
@@ -85,5 +95,18 @@ public class PDDService implements IPDDService {
     public List<ProductDetail> getListProduct() {
         List<Integer> integerList = pdpdRepo.getPD();
         return  pddRepo.getListPD(integerList);
+    }
+
+    @Override
+    public ProductDetail getPDDbyPPD(List<Integer> integerList) {
+        String pddID = pdpdRepo.findPDD(integerList, integerList.size());
+        if(pddID == null){
+            throw new AllException("Không tìm thấy sản phẩm !");
+        }
+        Optional<ProductDetail> pddOption = pddRepo.findById(Integer.parseInt(pddID));
+        if(pddOption.isPresent()){
+            return pddOption.get();
+        }
+        throw new AllException("Không tìm thấy sản phẩm !");
     }
 }
